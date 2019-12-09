@@ -1,0 +1,51 @@
+import { Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
+import { Action } from '@ngrx/store';
+import { StoreActions } from '../actions/books.action';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/do';
+import { map, switchMap, tap } from 'rxjs/operators';
+
+import { BooksService } from '../../services/books.service';
+
+@Injectable()
+export class StoreEffects {
+
+  constructor(
+    private actions$: Actions,
+    private booksService: BooksService
+    ) { }
+
+
+  @Effect() fetch$: Observable<Action> = this.actions$.pipe(
+    ofType(StoreActions.GET_BOOKS),
+    switchMap((action: StoreActions.GetBooks) =>
+      this.booksService.getAllBooks()),
+    map(data => {
+      return new StoreActions.GetBooksSuccess(data);
+    })
+  );
+
+  @Effect() order$: Observable<Action> = this.actions$.pipe(
+    ofType(StoreActions.ORDER_BOOK),
+    tap((action: StoreActions.OrderBook) => {
+
+    }),
+    map( (data: any) => {
+      return new StoreActions.OrderBookSuccess(data);
+    })
+  );
+
+  @Effect() add$: Observable<Action> = this.actions$.pipe(
+    ofType(StoreActions.ADD_TO_CART),
+    tap((action: StoreActions.AddToCart) => {
+      this.booksService.addToCart(action.id)
+    }),
+    map( (data: any) => {
+      return new StoreActions.AddToCartSuccess(data);
+    })
+  );
+
+}
