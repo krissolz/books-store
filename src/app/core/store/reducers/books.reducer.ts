@@ -7,7 +7,11 @@ export function booksReducer(state = initialState, action): BooksState {
   switch (action.type) {
 
     case StoreActions.GET_BOOKS_SUCCESS:
-        return Object.assign({}, state, {});
+        
+        let booksList = action.payload;
+        return Object.assign({}, state, {
+          booksList: [...booksList]
+        });
 
     case StoreActions.ADD_TO_CART:
         return Object.assign({}, state, {});

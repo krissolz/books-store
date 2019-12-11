@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  getUrl: 'http://localhost:4200/assets/books.json'
+  // getUrl: 'http://bookstore-coding-assignment.dronesense.com/v1/Books'
 };
 
 /*

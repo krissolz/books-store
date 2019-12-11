@@ -15,6 +15,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects } from 'src/app/core/store/effects/books.effect';
 import { HttpClientModule } from '@angular/common/http';
 
+import { ServiceModule } from './core/services/service.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,8 +27,14 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationComponent
   ],
   imports: [
+    StoreModule.forRoot(combineReducers),
+    EffectsModule.forRoot([
+      StoreEffects
+    ]),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ServiceModule
   ],
   providers: [],
   bootstrap: [AppComponent]

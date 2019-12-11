@@ -4,29 +4,40 @@ import { booksReducer } from './books.reducer';
 import { BooksState } from 'src/app/core/models';
 
 export const combineReducers: ActionReducerMap<RootState> = {
-  book: booksReducer
+  store: booksReducer
 }
 
 
-export const selectBook = (state: RootState) => state.book;
+export const selectBook = (state: RootState) => state.store;
 
 /*
+  store:
 
   {
-    "id": "string",
-    "title": "string",
-    "author": "string",
-    "isbn": "string",
-    "price": 0
+    booksList: [
+          {
+              id: 'string',
+              title: 'string',
+              author: 'string',
+              isbn: 'string',
+              price: 0 
+          },
+      ],
+      cart: {
+          books: [],
+          order: { 
+              ids: [], 
+              total: 0 
+          }
+      }
   }
 
 */
 
-export const selectSrc = createSelector(selectBook, (state: BooksState) => state);
-export const selectHasSubs = createSelector(selectBook, (state: BooksState) => state);
-export const selectSubsId = createSelector(selectBook, (state: BooksState) => state);
-export const selectOpts = createSelector(selectBook, (state: BooksState) => {
-  return {
-    
-  };
-});
+// export const selectBooksList = createSelector(selectBook, (state: BooksState) => state.booksList);
+// export const selectCartBooks = createSelector(selectBook, (state: BooksState) => state.cart.books);
+// export const selectCartTotal = createSelector(selectBook, (state: BooksState) => state.cart.order.total);
+// export const selectCartIds = createSelector(selectBook, (state: BooksState) => state.cart.order.ids);
+// export const selectCart = createSelector(selectBook, (state: BooksState) => state.cart);
+
+export const selectState = createSelector(selectBook, (state: BooksState) => state);

@@ -1,0 +1,30 @@
+[
+    {
+        "id": "08e79873-950a-4648-abd8-9f2381d09105",
+        "title": "Moby Dick",
+        "author": "Herman Melville",
+        "isbn": "1503280780",
+        "price": 12.47
+    },
+    {
+        "id": "3f02b9d8-58d6-4243-9df2-4be419ab1e57",
+        "title": "A Brief History of Time",
+        "author": "Stephen Hawking",
+        "isbn": "9780553380163",
+        "price": 12.44
+    },
+    {
+        "id": "5a26f31c-6037-47be-9c7f-64a49275419c",
+        "title": "The Catcher in the Rye",
+        "author": "J. D. Salinger",
+        "isbn": "9780316769174",
+        "price": 8.59
+    },
+    {
+        "id": "57895069-95e5-40a2-b267-c77c68d0c1c8",
+        "title": "Great Expectations",
+        "author": "Charles Dickns",
+        "isbn": "9780141439563",
+        "price": 7.99
+    }
+]

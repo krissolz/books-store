@@ -3,10 +3,10 @@ import { BooksState } from 'src/app/core/models';
 export const initialState: BooksState = {
     booksList: [
         {
-            id: "string",
-            title: "string",
-            author: "string",
-            isbn: "string",
+            id: 'string',
+            title: 'string',
+            author: 'string',
+            isbn: 'string',
             price: 0 
         },
     ],

@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 const $ = (s: string): any => document.querySelector(s);
 const defParam: string = '';
 const orderUrl: string = '';
-const getBooksUrl: string = '';
+const getBooksUrl: string = environment.getUrl;
 
 @Injectable()
 export class BooksService {

@@ -3,9 +3,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { StoreActions } from '../actions/books.action';
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { BooksService } from '../../services/books.service';
