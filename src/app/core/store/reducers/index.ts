@@ -7,8 +7,11 @@ export const combineReducers: ActionReducerMap<RootState> = {
   store: booksReducer
 }
 
-
-export const selectBook = (state: RootState) => state.store;
+export const selectState = state => state.store;
+export const selectBooks = createSelector(selectState, (state: BooksState) => state.booksList);
+export const selectCartBooks = createSelector(selectState, (state: BooksState) => state.cart.books);
+export const selectCartTotal = createSelector(selectState, (state: BooksState) => state.cart.order.total);
+export const selectCartIds = createSelector(selectState, (state: BooksState) => state.cart.order.ids);
 
 /*
   store:
@@ -34,10 +37,7 @@ export const selectBook = (state: RootState) => state.store;
 
 */
 
-// export const selectBooksList = createSelector(selectBook, (state: BooksState) => state.booksList);
 // export const selectCartBooks = createSelector(selectBook, (state: BooksState) => state.cart.books);
 // export const selectCartTotal = createSelector(selectBook, (state: BooksState) => state.cart.order.total);
 // export const selectCartIds = createSelector(selectBook, (state: BooksState) => state.cart.order.ids);
 // export const selectCart = createSelector(selectBook, (state: BooksState) => state.cart);
-
-export const selectState = createSelector(selectBook, (state: BooksState) => state);

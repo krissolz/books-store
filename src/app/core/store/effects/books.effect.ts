@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { StoreActions } from '../actions/books.action';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { BooksService } from '../../services/books.service';
@@ -37,12 +37,8 @@ export class StoreEffects {
 
   @Effect() add$: Observable<Action> = this.actions$.pipe(
     ofType(StoreActions.ADD_TO_CART),
-    tap((action: StoreActions.AddToCart) => {
-      this.booksService.addToCart(action.id)
-    }),
-    map( (data: any) => {
-      return new StoreActions.AddToCartSuccess(data);
-    })
+    switchMap( (action: StoreActions.AddToCart) => this.booksService.addToCart(action.id) ),
+    map( (data: any) => new StoreActions.AddToCartSuccess(data) )
   );
 
 }

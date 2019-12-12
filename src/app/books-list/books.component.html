@@ -1,13 +1,38 @@
-<h2>Store books list</h2>
+<header>
+    <h1>Books store</h1>
+</header>
 
-<ol>
-    <li *ngFor="let book of books">
-        <h3>{{ book.title }}</h3>
-        <p>
-            <strong>author:</strong> {{ book.author }},<br />
-            <strong>isbn:</strong> {{ book.author }},<br />
-            <strong>price:</strong> {{ book.price }} $
-        </p>
-        <button (click)="addToCart( book.id )">+ add to card</button>
-    </li>
-</ol>
+<main>
+        <h2>Books store list</h2>
+
+        <ol>
+            <li *ngFor="let book of books">
+                <h3>{{ book.title }}</h3>
+                <p>
+                    <strong>author:</strong> {{ book.author }},<br />
+                    <strong>isbn:</strong> {{ book.author }},<br />
+                    <strong>price:</strong> {{ book.price  | currency :'USD':'symbol':'1.2-2' }}
+                </p>
+                <button (click)="addToCart( book.id )">
+                    <span *ngIf="!checkBook(book.id)">+</span>
+                    add to card
+                </button>
+            </li>
+        </ol>
+</main>
+
+<aside>
+    <h2>My cart</h2>
+    <ol *ngIf="total">
+        <li *ngFor="let cBook of cart">
+            <h3>{{ cBook.title }}</h3>
+        </li>
+    </ol>
+    <p *ngIf="total">
+        <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
+    </p>
+</aside>
+
+<footer>
+    <div>&copy; {{ year | date: 'yyyy' }}</div>
+</footer>
