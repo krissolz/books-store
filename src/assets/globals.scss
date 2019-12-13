@@ -1,0 +1,9 @@
+body {
+    font: $fontSize $fontFamily;
+    background: $bg;
+    line-height: $lH;
+}
+
+h1, h2, h3, p, li {
+    margin: 0 0 25px;
+}

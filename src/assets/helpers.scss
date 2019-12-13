@@ -1,0 +1,41 @@
+/* fonts */
+$fontSize: 16px;
+$fontFamily: 'Roboto', sans-serif;
+$color: #333;
+$lH: 1.5;
+
+/* colors */
+$bg: #fafafa;
+
+/* resolutions */
+$xxs: 375px;
+$sm: 450px;
+$xs: 576px;
+$ms: 768px;
+$md: 992px;
+$lg: 1366px;
+$xl: 1920px;
+
+@mixin mobile {
+    @media only screen and (max-width: $sm) {
+      @content;
+    }
+}
+
+@mixin tablet {  
+  @media only screen and (max-width: $md) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media only screen and (max-width: $lg) {
+    @content;
+  }
+}
+  
+@mixin max-width($w) {
+  @media only screen and (max-width: $w) {
+    @content;
+  }
+}

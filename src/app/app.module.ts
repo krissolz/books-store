@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +14,8 @@ import { combineReducers } from './core/store/reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreEffects } from 'src/app/core/store/effects/books.effect';
 import { HttpClientModule } from '@angular/common/http';
+import { CoreModule } from './core/core.module';
+import { ServiceModule } from './core/services/service.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +33,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ServiceModule,
+    CoreModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
