@@ -2,12 +2,21 @@
     margin: 0;
     padding: 0;
     outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
 }
 
 img {
     border: 0;
 }
 
-html, body {
-    height: 100%;
+main {
+    display: block;
+}
+
+li {
+    list-style: none;
 }

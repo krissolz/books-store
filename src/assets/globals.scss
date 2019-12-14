@@ -7,3 +7,43 @@ body {
 h1, h2, h3, p, li {
     margin: 0 0 25px;
 }
+
+a {
+    text-decoration: none;
+    color: $linkColor;
+}
+
+a:hover {
+    text-decoration: overline;
+    border-bottom: 1px solid $linkColor;
+}
+
+%button {
+    padding: 5px 10px;
+    color: $buttonColor;
+    border: 0;
+    background: $buttonBg;
+    cursor: pointer;
+    &:active {
+        padding: 6px 9px 4px 11px;
+    }
+}
+
+.wrapper {
+    max-width: 1280px;
+    margin: auto;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.x::after {
+    content: "";
+    clear: both;
+    display: table;
+}

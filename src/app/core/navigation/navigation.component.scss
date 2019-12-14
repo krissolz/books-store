@@ -1,0 +1,10 @@
+@import 'src/styles.scss';
+
+a {
+    color: $headerColor;
+    margin: 0 10px;
+}
+
+a:hover {
+    border-bottom-color: $headerColor;
+}

@@ -2,8 +2,8 @@
     <h2>Books store list</h2>
 
     <ol>
-        <li *ngFor="let book of books">
-            <h3>{{ book.title }}</h3>
+        <li *ngFor="let book of books; index as i;">
+            <h3>{{ i + 1 }}. {{ book.title }}</h3>
             <p>
                 <strong>author:</strong> {{ book.author }},<br />
                 <strong>isbn:</strong> {{ book.author }},<br />
@@ -19,8 +19,8 @@
 <aside>
     <h2>My cart</h2>
     <ol *ngIf="total">
-        <li *ngFor="let cBook of cart">
-            <h3>{{ cBook.title }}</h3>
+        <li *ngFor="let cBook of cart; index as i;">
+            <h3>{{ i + 1 }}. {{ cBook.title }}</h3>
         </li>
     </ol>
     <p *ngIf="total">
