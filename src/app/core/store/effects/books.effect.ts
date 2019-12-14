@@ -25,20 +25,16 @@ export class StoreEffects {
     })
   );
 
-  @Effect() order$: Observable<Action> = this.actions$.pipe(
-    ofType(StoreActions.ORDER_BOOK),
-    tap((action: StoreActions.OrderBook) => {
-
-    }),
-    map( (data: any) => {
-      return new StoreActions.OrderBookSuccess(data);
-    })
-  );
-
   @Effect() add$: Observable<Action> = this.actions$.pipe(
     ofType(StoreActions.ADD_TO_CART),
     switchMap( (action: StoreActions.AddToCart) => this.booksService.addToCart(action.id) ),
     map( (data: any) => new StoreActions.AddToCartSuccess(data) )
+  );
+
+  @Effect() remove$: Observable<Action> = this.actions$.pipe(
+    ofType(StoreActions.REMOVE_FROM_CART),
+    map( (action: StoreActions.RemoveFromCart) => this.booksService.removeFromCart(action.id) ),
+    map( (data: any) => new StoreActions.RemoveFromCartSuccess(data) )
   );
 
 }

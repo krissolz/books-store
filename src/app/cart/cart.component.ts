@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RouterState } from '@angular/router';
 import { StoreActions } from 'src/app/core/store/actions/books.action';
@@ -16,12 +16,16 @@ export class CartComponent implements OnInit {
   books: Book[];
   cart: Book[];
   total: number;
+  order: boolean;
+
+  @ViewChildren('form') public form: ElementRef;
 
   constructor(
     private store$: Store<RouterState>,
     private book$: BooksService
   ) {
     this.total = null;
+    this.order = false;
   }
 
   checkBook(id: string): boolean {
@@ -34,6 +38,27 @@ export class CartComponent implements OnInit {
 
   getNumber(id: string) : number {
     return this.book$.getCopiesNumber(id);
+  }
+
+  removeFromCart(id: string): void {
+    this.store$.dispatch(new StoreActions.RemoveFromCart(id));
+  }
+
+  openForm(){
+    this.order = true;
+  }
+
+  cancelForm(){
+    this.order = false;
+    this.form.nativeElement.reset();
+  }
+
+  sendFormData(){
+
+  }
+
+  checkFormData(){
+
   }
 
   ngOnInit() {

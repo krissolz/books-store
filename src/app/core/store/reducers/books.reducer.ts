@@ -20,8 +20,13 @@ export function booksReducer(state = initialState, action): BooksState {
         clone.cart.order.total += action.payload.price;
         return clone;
 
-    case StoreActions.ORDER_BOOK:
-      return Object.assign({}, state, {});
+    case StoreActions.REMOVE_FROM_CART_SUCCESS:
+          let newState = Object.assign({}, state)
+          newState.cart.books = [...action.payload];
+          newState.cart.order.total = newState.cart.books.reduce( 
+            (price, currentValue) => price + currentValue.price
+            , 0 );
+          return newState;
       
     default: 
       return state;

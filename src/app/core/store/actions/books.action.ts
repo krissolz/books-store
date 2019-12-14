@@ -8,6 +8,8 @@ export namespace StoreActions {
   export const ORDER_BOOK_SUCCESS = 'ORDER_BOO_SUCCESS';
   export const ADD_TO_CART = 'ADD_TO_CART';
   export const ADD_TO_CART_SUCCESS = 'ADD_TO_CART_SUCCESS';
+  export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+  export const REMOVE_FROM_CART_SUCCESS = 'REMOVE_FROM_CART_SUCCESS';
 
   export class GetBooks implements Action {
     readonly type = GET_BOOKS;
@@ -39,12 +41,22 @@ export namespace StoreActions {
     constructor(public payload: any) { }
   }
 
+  export class RemoveFromCart implements Action {
+    readonly type = REMOVE_FROM_CART;
+    constructor(public id: any) { }
+  }
+
+  export class RemoveFromCartSuccess implements Action {
+    readonly type = REMOVE_FROM_CART_SUCCESS;
+    constructor(public payload: any) { }
+  }
+
   export type Actions =
     GetBooks |
     GetBooksSuccess |
-    OrderBook |
-    OrderBookSuccess |
     AddToCart |
-    AddToCartSuccess;
+    AddToCartSuccess |
+    RemoveFromCart |
+    RemoveFromCartSuccess;
 
 }

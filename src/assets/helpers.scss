@@ -6,6 +6,7 @@ $footerColor: #fafafa;
 $headerColor: #fff;
 $linkColor: #0991e9;
 $buttonColor: #fff;
+$error: #ff3333;
 $lH: 1.5;
 
 /* background colors */
@@ -13,6 +14,12 @@ $bg: #fafafa;
 $headerBg: #0991e9;
 $buttonBg: #0991e9;
 $footerBg: #525559;
+$orderformBg: #ededed;
+
+/* borders */
+$border: #ccc;
+$focus: #0991e9;
+$orderform: #ccc;
 
 /* resolutions */
 $xxs: 375px;

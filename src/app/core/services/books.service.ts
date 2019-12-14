@@ -9,7 +9,7 @@ import { CookieService } from './cookie.service';
 import { Store } from '@ngrx/store';
 import { RouterState } from '@angular/router';
 import { selectCartBooks, selectBooks } from 'src/app/core/store/reducers';
-import { Book } from '../models';
+import { Book, LineItems } from '../models';
 
 
 const $ = (s: string): any => document.querySelector(s);
@@ -48,6 +48,12 @@ export class BooksService {
     return book;
   }
 
+  removeFromCart(id: string){
+    const i = this.cBooks.findIndex(element => element.id === id);
+    this.cBooks.splice(i, 1);
+    return this.cBooks;
+  }
+
   checkCart(id: string): boolean {
     return this.cBooks.some(book => id === book.id);
   }
@@ -63,6 +69,20 @@ export class BooksService {
 
   getAllBooks(): Observable<any> {
     return this.http.get(getBooksUrl, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
+  }
+
+  countedBooks(ids: string[]): LineItems[] {
+    let books = ids.reduce((allIds, id) => { 
+      if (id in allIds) {
+        allIds[id]++;
+      }
+      else {
+        allIds[id] = 1;
+      }
+        return allIds;
+      }, {});
+  
+    return Object.keys(books).map(key => { return { bookId: key, quantity: books[key] }; });
   }
 
 }

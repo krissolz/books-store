@@ -1,19 +1,91 @@
 <h2>My cart</h2>
-<section class="fl">
-    <ol *ngIf="total">
-        <li *ngFor="let cBook of getUnic(cart); index as i;">
-            <h3>{{ i + 1 }}. {{ cBook.title }}</h3>
-            <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
-            <button (click)="removeToCart( book.id )">remove from card</button>
-        </li>
-    </ol>
-    <p *ngIf="!total">Your cart is empty.</p>
-</section>
-<aside class="fr">
-    <p *ngIf="total">
-        <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
-    </p>
-    <button *ngIf="total">
-        Make an order
-    </button>
-</aside>
+
+<div class="x">
+    <section class="fl">
+        <ol *ngIf="total">
+            <li *ngFor="let cBook of getUnic(cart); index as i;">
+                <h3>{{ i + 1 }}. {{ cBook.title }} <span>in a price of {{ cBook.price  | currency :'USD':'symbol':'1.2-2' }}</span></h3>
+                <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
+                <button (click)="removeFromCart( cBook.id )">remove <span *ngIf="getNumber(cBook.id) > 1">a copie</span> from card</button>
+            </li>
+        </ol>
+        <p *ngIf="!total">Your cart is empty.</p>
+    </section>
+    <aside class="fr">
+        <p *ngIf="total">
+            <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
+        </p>
+        <p *ngIf="!order">
+            <button (click)="openForm()" *ngIf="total">
+                Make an order
+            </button>
+        </p>
+    </aside>
+</div>
+
+<div #form *ngIf="order" class="orderform">
+    <form name="booksOrderForm">
+        <h3>Fill the form:</h3>
+        <p>
+            <strong>Full name:</strong><br />
+            <input type="text" name="fullName" />
+        </p>
+        <p>
+            <strong>Country:</strong><br />
+            <input type="text" name="country" />
+        </p>
+        <p>
+            <strong>State:</strong><br />
+            <input type="text" name="state" />
+        </p>
+        <p>
+            <strong>Zip:</strong><br />
+            <input type="text" name="zip" />
+        </p>
+        <p>
+            <strong>City:</strong><br />
+            <input type="text" name="city" />
+        </p>
+        <p>
+            <strong>Address:</strong><br />
+            <textarea cols="30" rows="5" name="address" ></textarea>
+        </p>
+        <p>
+            <strong>Payment Type:</strong><br />
+            <select name="paymentType">
+                <option value="0">---</option>
+                <option value="1">Credit Card</option>
+                <option value="2">Pay Pal</option>
+                <option value="3">Transfer</option>
+                <option value="4">Pay by cash</option>
+            </select>
+        </p>
+        <div class="cartData">
+            <p>
+                <strong>Card Name:</strong><br />
+                <select name="cardName">
+                    <option value="">---</option>
+                    <option value="american_express">American Express</option>
+                    <option value="master_card">MasterCard</option>
+                    <option value="visa">Visa</option>
+                </select>
+            </p>
+            <p>
+                <strong>Card Number:</strong><br />
+                <input type="number" name="cardNumber" />
+            </p>
+            <p>
+                <strong>Card Expiry:</strong><br />
+                <input type="text" name="cardExpiry" />
+            </p>
+            <p>
+                <strong>Card CVV:</strong><br />
+                <input type="number" name="cardCVV" />
+            </p>
+
+            <button (click)="sendFormData()">Send the order</button>
+            <button (click)="cancelForm()">Cancel the order</button>
+            
+        </div>
+    </form>
+</div>

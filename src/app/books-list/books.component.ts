@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { RouterState } from '@angular/router';
+import { RouterState, Router } from '@angular/router';
 import { StoreActions } from 'src/app/core/store/actions/books.action';
 import { selectCartBooks, selectBooks, selectCartTotal } from 'src/app/core/store/reducers';
 import { Book } from 'src/app/core/models';
@@ -19,13 +19,18 @@ export class BooksListComponent implements OnInit {
 
   constructor(
     private store$: Store<RouterState>,
-    private book$: BooksService
+    private book$: BooksService,
+    private router: Router
   ) {
     this.total = null;
   }
 
   addToCart(id: string){
     this.store$.dispatch(new StoreActions.AddToCart(id));
+  }
+
+  removeFromCart(id: string): void {
+    this.store$.dispatch(new StoreActions.RemoveFromCart(id));
   }
 
   checkBook(id: string): boolean {
@@ -38,6 +43,10 @@ export class BooksListComponent implements OnInit {
 
   getNumber(id: string) : number {
     return this.book$.getCopiesNumber(id);
+  }
+
+  goToCart(): void {
+    this.router.navigate(['/mycart']);
   }
 
   ngOnInit() {
