@@ -1,1 +1,19 @@
-<p>cart works!</p>
+<h2>My cart</h2>
+<section class="fl">
+    <ol *ngIf="total">
+        <li *ngFor="let cBook of getUnic(cart); index as i;">
+            <h3>{{ i + 1 }}. {{ cBook.title }}</h3>
+            <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
+            <button (click)="removeToCart( book.id )">remove from card</button>
+        </li>
+    </ol>
+    <p *ngIf="!total">Your cart is empty.</p>
+</section>
+<aside class="fr">
+    <p *ngIf="total">
+        <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
+    </p>
+    <button *ngIf="total">
+        Make an order
+    </button>
+</aside>

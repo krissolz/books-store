@@ -16,14 +16,12 @@ export class BooksListComponent implements OnInit {
   books: Book[];
   cart: Book[];
   total: number;
-  year: number;
 
   constructor(
     private store$: Store<RouterState>,
     private book$: BooksService
   ) {
     this.total = null;
-    this.year = Date.now();
   }
 
   addToCart(id: string){
@@ -32,6 +30,14 @@ export class BooksListComponent implements OnInit {
 
   checkBook(id: string): boolean {
     return this.book$.checkCart(id);
+  }
+
+  getUnic(cart: Book[]): Book[]{
+    return this.book$.getUnicBooks(cart);
+  }
+
+  getNumber(id: string) : number {
+    return this.book$.getCopiesNumber(id);
   }
 
   ngOnInit() {

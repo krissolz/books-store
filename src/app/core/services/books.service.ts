@@ -52,6 +52,15 @@ export class BooksService {
     return this.cBooks.some(book => id === book.id);
   }
 
+  getUnicBooks(books: Book[]): Book[]{
+    return [...new Set(books)];
+  }
+
+  getCopiesNumber(id: string): number{
+    let arr = this.cBooks.filter(item => item.id === id);
+    return arr.length;
+  }
+
   getAllBooks(): Observable<any> {
     return this.http.get(getBooksUrl, { headers: new HttpHeaders().set('Content-Type', 'application/json') });
   }
