@@ -7,12 +7,18 @@
                 <p>
                     <strong>author:</strong> {{ book.author }},<br />
                     <strong>isbn:</strong> {{ book.author }},<br />
-                    <strong>price:</strong> {{ book.price  | currency :'USD':'symbol':'1.2-2' }}
+                    <strong>price:</strong> {{ book.price  | currency :'USD':'symbol':'1.2-2' }}<br />
+                    <a href="javascript://"  [routerLink]="['/book', { id: i + 1 }]" routerLinkActive="active">
+                        see more &raquo;
+                    </a>
                 </p>
                 <button (click)="addToCart( book.id )">Add to card</button>
                 <button (click)="removeFromCart( book.id )" *ngIf="checkBook(book.id)">Remove from card</button>
             </li>
         </ol>
+        <p *ngIf="howMany < books.length" class="more mobile">
+            <button (click)="viewMore()">View more</button>
+        </p>
     </section>
     <aside class="fr">
         <div class="sticky">
@@ -34,6 +40,6 @@
         </div>
     </aside>
 </div>
-<p *ngIf="howMany < books.length" class="more">
+<p *ngIf="howMany < books.length" class="more desktop">
     <button (click)="viewMore()">View more</button>
 </p>

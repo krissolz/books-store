@@ -5,8 +5,9 @@ import { StoreActions } from 'src/app/core/store/actions/books.action';
 import { selectCartBooks, selectBooks, selectCartTotal } from 'src/app/core/store/reducers';
 import { Book } from 'src/app/core/models';
 import { BooksService } from 'src/app/core/services/books.service';
+import { environment } from 'src/environments/environment';
 
-const more: number = 3;
+const more: number = environment.more;
 
 @Component({
   selector: 'app-books',

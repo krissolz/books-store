@@ -11,8 +11,6 @@ import { RouterState } from '@angular/router';
 import { selectCartBooks, selectBooks } from 'src/app/core/store/reducers';
 import { Book, LineItems } from '../models';
 
-
-const $ = (s: string): any => document.querySelector(s);
 const defParam: string = '';
 const orderUrl: string = '';
 const getBooksUrl: string = environment.getUrl;
@@ -83,6 +81,10 @@ export class BooksService {
       }, {});
   
     return Object.keys(books).map(key => { return { bookId: key, quantity: books[key] }; });
+  }
+
+  width$(): number{
+    return Math.max( document.body.offsetWidth, document.documentElement.offsetWidth );
   }
 
 }

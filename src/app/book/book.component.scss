@@ -5,14 +5,33 @@
     min-height: 90%;
     margin: 0 0 50px;
     min-height: 90%;
-    aside {
-        width: 48%;
-    }
     img {
         margin-right: 10px;
         border: 1px solid $image;
         width: 200px;
         height: auto;
+    }
+    section {
+        @include tablet {
+            h3 {
+                clear: both;
+            }
+        }
+    }
+    aside {
+        position: absolute;
+        top: 0;
+        bottom: 100px;
+        right: 0;
+        .sticky {
+            position: sticky;
+            top: 10px;
+        }
+    }
+    @include mobile {
+        aside, .sticky {
+            position: static;
+        }
     }
 }
 

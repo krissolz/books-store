@@ -23,7 +23,7 @@
     </aside>
 </div>
 
-<div #form *ngIf="order" class="orderform">
+<div #form *ngIf="order && total" class="orderform">
     <form name="booksOrderForm">
         <h3>Fill the form:</h3>
         <p>

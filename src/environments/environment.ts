@@ -4,8 +4,11 @@
 
 export const environment = {
   production: false,
-  getUrl: 'http://localhost:4200/assets/books.json'
-  // getUrl: 'http://bookstore-coding-assignment.dronesense.com/v1/Books'
+  getUrl: 'http://localhost:4200/assets/books.json',
+  more: 3,
+  pageingNumber: 10,
+  mobilePagingNum: 3,
+  mobileRes: 450
 };
 
 /*

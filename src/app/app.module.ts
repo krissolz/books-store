@@ -16,6 +16,7 @@ import { StoreEffects } from 'src/app/core/store/effects/books.effect';
 import { HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './core/core.module';
 import { ServiceModule } from './core/services/service.module';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ServiceModule } from './core/services/service.module';
     NotfoundComponent,
     CartComponent,
     BookComponent,
+    SuccessComponent,
   ],
   imports: [
     StoreModule.forRoot(combineReducers),

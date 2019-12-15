@@ -1,5 +1,9 @@
 @import 'src/styles.scss';
 
+.desktop {
+    display: inline;
+}
+
 a {
     color: $headerColor;
     margin: 0 10px;
@@ -7,4 +11,73 @@ a {
 
 a:hover {
     border-bottom-color: $headerColor;
+}
+
+.burger {
+    position: absolute;
+    top: 35px;
+    right: 20px;
+    cursor: pointer;
+    span {
+        display: block;
+        width: 30px;
+        height: 3px;
+        margin: 0 0 5px;
+        background: $bg;
+        position: relative;
+        transition: .4s;
+    }
+    &.selected {
+        span {
+            opacity: 0;
+        }
+        span:last-child,
+        span:first-child {
+            opacity: 1;
+            transform: rotate(-45deg);
+            top: 5px;
+        }
+        span:last-child {
+            transform: rotate(45deg);
+            top: -10px;
+        }
+    }
+}
+
+@include tablet {
+    a {
+        margin: 0 0 15px;
+        display: block;
+    }
+    .desktop {
+        display: none;
+    }
+    .mobile {
+        display: block;
+    }
+    nav {
+        visibility: hidden;
+        transition: opacity .5s ease-in-out;
+        opacity: 0;
+        box-shadow: 0 1px 7px 0 $shadow;
+        background: $bg;
+        position: absolute;
+        width: 200px;
+        top: 65px;
+        right: 0;
+        a {
+            color: $color;
+            margin: 0;
+            text-decoration: none;
+            border: 0;
+            padding: 10px 20px;
+            &:hover {
+                background: #ddd;
+            }
+        }
+        &.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
 }

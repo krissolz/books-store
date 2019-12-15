@@ -1,5 +1,10 @@
-<nav>
-    <a href="javascript://" routerLink="/">Home</a> |
-    <a href="javascript://"  [routerLink]="['/book', { id: 1 }]" routerLinkActive="active">Books</a> |
-    <a href="javascript://" routerLink="/mycart">My cart</a>
+<div class="mobile burger" (click)="toggleMenu($event)" [class.selected]="show">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<nav [class.visible]="show">
+    <a href="javascript://" routerLink="/" (click)="toggleMenu($event)">Home</a> <span class="desktop">|</span>
+    <a href="javascript://"  [routerLink]="['/book', { id: 1 }]" routerLinkActive="active" (click)="toggleMenu($event)">Books</a> <span class="desktop">|</span>
+    <a href="javascript://" routerLink="/mycart" (click)="toggleMenu($event)">My cart</a>
 </nav>

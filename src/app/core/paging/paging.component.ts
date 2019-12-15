@@ -3,8 +3,17 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 import { Book } from 'src/app/core/models';
+import { environment } from 'src/environments/environment';
+import { BooksService } from '../services/books.service';
+
+const mobile = environment.mobileRes;
+const mobilePages = environment.mobilePagingNum;
+const desktopPages = environment.pageingNumber;
 
 @Component({
+  host: {
+    '(window: resize)': 'onResize($event)'
+  },
   selector: 'app-paging',
   templateUrl: './paging.component.html',
   styleUrls: ['./paging.component.scss']
@@ -21,12 +30,13 @@ export class PagingComponent implements OnInit, OnChanges {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private book$: BooksService
   ) {
     this.paging = null;
     this.bookObserve = new BehaviorSubject(this.books);
     this.start = 0;
-    this.pageimgNumber = 10;
+    this.pageimgNumber = desktopPages;
   }
 
   goToEnd(): void {
@@ -69,6 +79,11 @@ export class PagingComponent implements OnInit, OnChanges {
     this.bookObserve.subscribe( (res: Book[]) => { this.paging = res; this.getPages() } );
     let subscribtion = this.route.paramMap.pipe( map( (params: ParamMap) => params.get('id') ) );
     subscribtion.subscribe( res => this.page = +res );
+  }
+
+  onResize(e: Event){
+    this.pageimgNumber = this.book$.width$() >= mobile? desktopPages : mobilePages; 
+    this.getPages();
   }
 
 }

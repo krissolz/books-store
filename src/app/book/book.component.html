@@ -19,20 +19,22 @@
         </p>
     </section>
     <aside class="fr">
-        <app-icon-cart class="cart"></app-icon-cart>
-        <h2>My cart</h2>
-        <ol *ngIf="total">
-            <li *ngFor="let cBook of getUnic(cart); index as i;">
-                <h3>{{ cBook.title }} <span>in a price of {{ cBook.price  | currency :'USD':'symbol':'1.2-2' }}</span></h3>
-                <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
-            </li>
-        </ol>
-        <p *ngIf="total">
-            <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
-        </p>
-        <button (click)="goToCart()" *ngIf="total">
-            Make an order
-        </button>
+        <div class="sticky">
+            <app-icon-cart class="cart"></app-icon-cart>
+            <h2>My cart</h2>
+            <ol *ngIf="total">
+                <li *ngFor="let cBook of getUnic(cart); index as i;">
+                    <h3>{{ cBook.title }} <span>in a price of {{ cBook.price  | currency :'USD':'symbol':'1.2-2' }}</span></h3>
+                    <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
+                </li>
+            </ol>
+            <p *ngIf="total">
+                <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
+            </p>
+            <button (click)="goToCart()" *ngIf="total">
+                Make an order
+            </button>
+        </div>
     </aside>
 </div>
 <app-paging [pages]="books"></app-paging>
