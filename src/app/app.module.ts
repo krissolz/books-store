@@ -25,7 +25,7 @@ import { SuccessComponent } from './success/success.component';
     NotfoundComponent,
     CartComponent,
     BookComponent,
-    SuccessComponent,
+    SuccessComponent
   ],
   imports: [
     StoreModule.forRoot(combineReducers),

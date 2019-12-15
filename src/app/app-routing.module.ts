@@ -9,6 +9,10 @@ import { SuccessComponent } from './success/success.component';
 
 const routes: Routes = [
     {
+        path: 'book',
+        component: BookComponent
+    },
+    {
         path: 'book/:id',
         component: BookComponent
     },

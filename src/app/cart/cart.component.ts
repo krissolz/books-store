@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
   }
 
   sendFormData(){
-
+    
   }
 
   checkFormData(){
