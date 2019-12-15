@@ -1,5 +1,5 @@
 <nav>
     <a href="javascript://" routerLink="/">Home</a> |
-    <a href="javascript://" routerLink="/book;id=1" routerLinkActive="active">Books</a> |
+    <a href="javascript://"  [routerLink]="['/book', { id: 1 }]" routerLinkActive="active">Books</a> |
     <a href="javascript://" routerLink="/mycart">My cart</a>
 </nav>

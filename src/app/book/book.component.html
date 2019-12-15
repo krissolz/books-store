@@ -1,1 +1,38 @@
-<p>book id: {{ id }} works!</p>
+<h2>Book review</h2>
+<div *ngIf="book" class="container x">
+    <section class="fl">
+        <p class="fl">
+            <img [src]="book.image" [attr.alt]="book.title" width="200" height="auto" />
+        </p>
+        <h3>{{ book.title }}</h3>  
+        <p>
+            <strong>author:</strong> {{ book.author }},<br />
+            <strong>isbn:</strong> {{ book.isbn }},<br />
+            <strong>price:</strong> {{ book.price  | currency :'USD':'symbol':'1.2-2' }}
+        </p>
+        <p>
+            {{ book.description }}
+        </p>
+        <p>
+            <button (click)="addToCart( book.id )">add to card</button>
+            <button (click)="removeFromCart( book.id )" *ngIf="checkBook(book.id)">remove from card</button>
+        </p>
+    </section>
+    <aside class="fr">
+        <app-icon-cart class="cart"></app-icon-cart>
+        <h2>My cart</h2>
+        <ol *ngIf="total">
+            <li *ngFor="let cBook of getUnic(cart); index as i;">
+                <h3>{{ cBook.title }} <span>in a price of {{ cBook.price  | currency :'USD':'symbol':'1.2-2' }}</span></h3>
+                <p *ngIf="getNumber(cBook.id) > 1"><strong>{{ getNumber(cBook.id) }}</strong> copies of this book.</p>
+            </li>
+        </ol>
+        <p *ngIf="total">
+            <strong>The totalprice is: </strong> {{ total | currency :'USD':'symbol':'1.2-2' }}
+        </p>
+        <button (click)="goToCart()" *ngIf="total">
+            Make an order
+        </button>
+    </aside>
+</div>
+<app-paging [pages]="books"></app-paging>

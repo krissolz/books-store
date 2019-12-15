@@ -6,17 +6,11 @@ import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from 'src/app/app-routing.module';
 
-import { FooterComponent } from './footer/footer.component';
-import { HeaderComponent } from './header/header.component';
-import { NavigationComponent } from './navigation/navigation.component';
-import { PagingComponent } from './paging/paging.component';
+import { IndexService } from './index';
 
 @NgModule({
   declarations: [
-    FooterComponent,
-    HeaderComponent,
-    NavigationComponent,
-    PagingComponent
+    ...IndexService
   ],
   imports: [
     CommonModule,
@@ -26,11 +20,7 @@ import { PagingComponent } from './paging/paging.component';
     AppRoutingModule
   ],
   exports:[
-    CommonModule,
-    FooterComponent,
-    HeaderComponent,
-    NavigationComponent,
-    PagingComponent
+    ...IndexService
   ]
 })
 export class CoreModule { }

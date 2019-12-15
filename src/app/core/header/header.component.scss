@@ -4,7 +4,6 @@ header {
     padding: 20px;
     background: $headerBg;
     color: $headerColor;
-    margin: 0 0 25px;
     img {
         vertical-align: middle;
         margin-right: 20px;
@@ -20,4 +19,11 @@ header {
 .wrapper {
     overflow: hidden;
     max-height: 50px;
+}
+
+.container {
+    height: 200px;
+    background: url($imageBg) no-repeat 50% 0;
+    background-size: cover;
+    margin: 0 0 25px;
 }

@@ -3,7 +3,9 @@ export interface Book {
     title: string,
     author: string,
     isbn: string,
-    price: number
+    price: number,
+    description: string,
+    image: string
 }
 
 export interface Order {

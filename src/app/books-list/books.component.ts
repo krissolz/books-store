@@ -6,6 +6,8 @@ import { selectCartBooks, selectBooks, selectCartTotal } from 'src/app/core/stor
 import { Book } from 'src/app/core/models';
 import { BooksService } from 'src/app/core/services/books.service';
 
+const more: number = 3;
+
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -16,6 +18,7 @@ export class BooksListComponent implements OnInit {
   books: Book[];
   cart: Book[];
   total: number;
+  howMany: number;
 
   constructor(
     private store$: Store<RouterState>,
@@ -23,6 +26,11 @@ export class BooksListComponent implements OnInit {
     private router: Router
   ) {
     this.total = null;
+    this.howMany = more;
+  }
+
+  viewMore(): void {
+    this.howMany += more;
   }
 
   addToCart(id: string){

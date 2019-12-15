@@ -1,29 +1,3 @@
-body {
-    font: $fontSize $fontFamily;
-    background: $bg;
-    line-height: $lH;
-}
-
-h1, h2, h3, p, li {
-    margin: 0 0 25px;
-}
-
-h3 {
-    span {
-        font-weight: normal;
-    }
-}
-
-a {
-    text-decoration: none;
-    color: $linkColor;
-}
-
-a:hover {
-    text-decoration: overline;
-    border-bottom: 1px solid $linkColor;
-}
-
 %button {
     padding: 5px 15px;
     color: $buttonColor;
@@ -56,10 +30,52 @@ a:hover {
     margin: 0 0 5px;
 }
 
+%selected {
+    text-decoration: overline;
+    border-bottom: 1px solid $linkColor;
+}
+
+%cart {
+    & svg {
+        fill: $cartBg;
+        width: 40px;
+        height: 40px;
+        float: left;
+        margin-right: 20px;
+    }
+}
+
+body {
+    font: $fontSize $fontFamily;
+    background: $bg;
+    line-height: $lH;
+}
+
+h1, h2, h3, p, li {
+    margin: 0 0 25px;
+}
+
+h3 {
+    span {
+        font-weight: normal;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: $linkColor;
+}
+
+a:hover {
+    @extend %selected;
+}
+
 main {
     @extend %wrapper;
     @extend .x;
     padding: 0 15px 25px;
+    min-height: calc(100vh - 232px);
+    position: relative;
 }
 
 section {
@@ -95,4 +111,8 @@ input, textarea, select {
     content: "";
     clear: both;
     display: table;
+}
+
+.cart {
+    @extend %cart;
 }

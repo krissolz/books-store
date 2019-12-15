@@ -1,1 +1,15 @@
-<p>paging works!</p>
+<menu>
+    <span [class.hidden]="page === 1">
+        <a href="javascript://" (click)="goToStart()">&laquo;&laquo;</a>
+        <a href="javascript://" (click)="goToPage(-1)">&laquo;</a>
+    </span>
+    <a *ngFor="let item of paging | slice : start : start + pageimgNumber; index as i;" 
+        [class.sel]="page === i + start + 1" 
+        href="javascript://" 
+        [routerLink]="['/book', { id: i + start + 1 }]" 
+        routerLinkActive="active">{{ i + start + 1 }}</a>
+    <span [class.hidden]="page === books.length">
+        <a href="javascript://" (click)="goToPage(1)">&raquo;</a>
+        <a href="javascript://" (click)="goToEnd()">&raquo;&raquo;</a> 
+    </span>  
+</menu>
